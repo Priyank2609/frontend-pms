@@ -44,7 +44,7 @@ export class Auth {
   }
 
   // URL = 'http://localhost:3001/'
-  URL = 'https://pms-backend-vb2n.onrender.com/
+  URL = 'https://pms-backend-vb2n.onrender.com/'
 
   loginUser(data: any): Observable<any> {
     return this.http.post(`${this.URL}users/login`, data, {
