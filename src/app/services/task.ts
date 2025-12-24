@@ -8,7 +8,8 @@ import { MyTask, TaskDetailPage, TaskListPage } from '../interfaces/task.interfa
 })
 export class Task {
   constructor(private http: HttpClient) { }
-  URL = 'http://localhost:3001/'
+  // URL = 'http://localhost:3001/'
+  URL = 'https://pms-backend-vb2n.onrender.com/'
 
   createTasks(id: string, data: any): Observable<any> {
     return this.http.post(`${this.URL}task/create-task/${id}`, data, { withCredentials: true })

@@ -8,7 +8,8 @@ import { Milestone, MilestoneDetailPage } from '../interfaces/milestone.interfac
 })
 export class Milstone {
   constructor(private http: HttpClient) { }
-  URL = 'http://localhost:3001/'
+  // URL = 'http://localhost:3001/'
+  URL = 'https://pms-backend-vb2n.onrender.com/'
 
   createMilestone(id: string, data: any): Observable<any> {
     return this.http.post(`${this.URL}milestone/create-milestone/${id}`, data, {

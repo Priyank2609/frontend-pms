@@ -13,7 +13,8 @@ import { Progress } from '../interfaces/progress.interface';
 export class Project {
 
   constructor(private http: HttpClient) { }
-  URL = 'http://localhost:3001/'
+  // URL = 'http://localhost:3001/'
+  URL = 'https://pms-backend-vb2n.onrender.com/'
 
   createPrject(data: any) {
     return this.http.post(`${this.URL}project/create-project`, data, {

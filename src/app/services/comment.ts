@@ -8,7 +8,8 @@ import { CommentDetail } from '../interfaces/comment.interface';
 })
 export class Comment {
   constructor(private http: HttpClient) { }
-  URL = 'http://localhost:3001/'
+  // URL = 'http://localhost:3001/'
+  URL = 'https://pms-backend-vb2n.onrender.com/'
 
 
   getAllComment(): Observable<any> {
