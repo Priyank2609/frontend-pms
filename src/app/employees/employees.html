@@ -1,0 +1,30 @@
+<section class="employees-page">
+
+  <h1 class="page-title">Employees</h1>
+  <p class="page-subtitle">Manage your team members and their roles</p>
+
+  <div class="employees-grid">
+    <div class="employee-card" *ngFor="let emp of employees | async">
+
+      <!-- Avatar -->
+      <div class="avatar" [title]="emp.username">
+        {{ emp.username[0] | uppercase }}
+      </div>
+
+      <!-- Employee Info -->
+      <div class="employee-info">
+        <h3 title="{{emp.username}}">{{ emp.username }}</h3>
+        <p class="email">{{ emp.email }}</p>
+        <span class="role">{{ emp.role }}</span>
+      </div>
+
+      <!-- Actions -->
+      <div class="actions">
+        <button class="btn view-btn" [routerLink]="['/users/employee',emp._id]">View</button>
+
+      </div>
+
+    </div>
+  </div>
+
+</section>

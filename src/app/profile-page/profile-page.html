@@ -1,0 +1,43 @@
+<section class="profile-section">
+  <div class="profile-card">
+
+
+    <div class="profile-header">
+      <div class="avatar">
+        <img src="https://i.pravatar.cc/100?img=12" />
+      </div>
+      <div class="user-info">
+        <h1>{{ (userProfile | async)?.fullname }}</h1>
+        <p class="role">{{ (userProfile | async)?.user?.role }}</p>
+      </div>
+    </div>
+
+
+    <div class="profile-details" *ngIf="!editForm">
+      <div class="detail"><span>Email:</span> {{ (userProfile | async)?.user?.email }}</div>
+      <div class="detail"><span>Username:</span> {{ (userProfile | async)?.user?.username }}</div>
+      <div class="detail"><span>Phone:</span> {{ (userProfile | async)?.phone }}</div>
+      <div class="detail"><span>Address:</span> {{ (userProfile | async)?.address }}</div>
+    </div>
+
+
+    <form class="edit-form" *ngIf="editForm" (ngSubmit)="updateProfile()">
+      <input type="text" name="fullname" [(ngModel)]="form.fullname" placeholder="Full Name" required />
+      <input type="text" name="phone" [(ngModel)]="form.phone" placeholder="Phone" required />
+      <input type="email" name="email" [(ngModel)]="form.email" placeholder="email" required />
+      <textarea name="address" placeholder="Address" [(ngModel)]="form.address" required></textarea>
+
+      <div class="form-actions">
+        <button class="btn" type="submit">Save</button>
+        <button class="btn secondary" type="button" (click)="closeEdit()">Cancel</button>
+      </div>
+    </form>
+
+
+    <div class="profile-actions">
+      <button class="btn" *ngIf="!editForm" (click)="enableEdit()">Edit Profile</button>
+      <button class="btn secondary" (click)="logoutUser()">Logout</button>
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,36 @@
+<section class="milestone-list-page">
+
+  <div class="page-header">
+    <h1>Milestones</h1>
+    <p class="subtitle">
+      Overview of all project milestones across different projects. You can track progress, see milestone details, and
+      manage tasks effectively.
+    </p>
+  </div>
+
+
+  <div class="milestone-grid">
+    <ng-container *ngFor="let mile of milestones | async">
+      <div class="milestone-card" *ngIf="!mile.isDeleted">
+
+        <h3 class="mile-title">{{ mile.name }}</h3>
+
+        <p class="project-name"><strong>Project:</strong> {{ mile.project.name }}</p>
+
+        <p class="desc">
+          {{ mile.description }} <br>
+
+        </p>
+
+        <!-- Detail button -->
+        <button class="detail-btn" [routerLink]="['/milestone',mile._id]">
+          View Details
+        </button>
+
+      </div>
+    </ng-container>
+  </div>
+
+
+
+</section>

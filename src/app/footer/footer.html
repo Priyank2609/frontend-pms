@@ -1,0 +1,65 @@
+<footer class="footer">
+  <div class="footer-container">
+    <!-- Logo & Description -->
+    <div class="footer-brand">
+      <div class="logo">
+        <div class="icon">📁</div>
+        <div class="text">
+          <span class="title">PMS</span>
+          <span class="subtitle">Project Management</span>
+        </div>
+      </div>
+      <p>Empowering teams to manage projects efficiently and collaborate seamlessly.</p>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-links">
+      <h3>Quick Links</h3>
+      <ng-container *ngIf="userRole === 'Admin' || userRole==='Client'">
+        <a routerLink="admin/dashboard" routerLinkActive="active">Dashboard</a>
+        <a routerLink="/projects" routerLinkActive="active">Projects</a>
+        <a routerLink="/milestones" routerLinkActive="active">Milestone</a>
+        <a routerLink="users/employee" routerLinkActive="active" *ngIf="userRole==='Admin'">Employees</a>
+        <a routerLink="/createProject" routerLinkActive="active" *ngIf="userRole==='Admin'">Create Project</a>
+      </ng-container>
+
+
+      <ng-container *ngIf="userRole === 'Project Manager'">
+
+        <a routerLink="/projects" routerLinkActive="active">Projects</a>
+        <a routerLink="/milestones" routerLinkActive="active">Milestone</a>
+        <a routerLink="/tasks" routerLinkActive="active">Tasks</a>
+        <!-- <a routerLink="/createTask" routerLinkActive="active">Create Tasks</a> -->
+      </ng-container>
+
+      <ng-container *ngIf="userRole === 'Team Leader'">
+
+        <!-- <a routerLink="/projects" routerLinkActive="active">Projects</a>
+      <a routerLink="/milestones" routerLinkActive="active">Milestone</a> -->
+        <a routerLink="/tasks" routerLinkActive="active">Tasks</a>
+        <!-- <a routerLink="/createTask" routerLinkActive="active">Create Tasks</a> -->
+      </ng-container>
+
+      <ng-container *ngIf="userRole === 'Employee'">
+        <a routerLink="/tasks" routerLinkActive="active">Tasks</a>
+        <a routerLink="/my-tasks" routerLinkActive="active">My Tasks</a>
+
+      </ng-container>
+    </div>
+
+    <!-- Social Icons -->
+    <div class="footer-social">
+      <h3>Follow Us</h3>
+      <div class="social-icons">
+        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="#"><i class="fa-brands fa-github"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 PMS. All Rights Reserved.</p>
+  </div>
+</footer>

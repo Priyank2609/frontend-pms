@@ -1,0 +1,18 @@
+<div class="create-comment-page">
+  <div class="comment-card">
+
+    <h2 class="title">Add a Comment</h2>
+
+    <form #taskForm="ngForm" (ngSubmit)="addComment(taskForm)">
+
+      <div class="form-group">
+        <label for="comment">Comment</label>
+        <textarea id="comment" name="comment" placeholder="Write your comment..." required ngModel></textarea>
+      </div>
+
+
+      <button class="btn-submit">Submit Comment</button>
+
+    </form>
+  </div>
+</div>

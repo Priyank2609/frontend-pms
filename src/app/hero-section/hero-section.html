@@ -1,0 +1,51 @@
+<section class="hero">
+  <div class="hero-inner">
+
+    <div class="hero-content">
+      <h1 class="title">
+        Empower Your <span>Workflow</span>
+      </h1>
+
+      <p class="subtitle">
+        Organize projects, track progress, and collaborate smoothly — all in one
+        next-gen workspace designed for speed and clarity.
+      </p>
+
+      <div class="cta-buttons">
+
+        <!-- Not Logged In -->
+        <button *ngIf="!isLoggedIn" class="btn primary" routerLink="/register">
+          Get Started
+        </button>
+
+        <!-- Logged In -->
+        <ng-container *ngIf="isLoggedIn">
+          <button *ngIf="userRole === 'Admin'" class="btn primary" routerLink="admin/dashboard">
+            Go to Dashboard
+          </button>
+
+          <button *ngIf="userRole === 'Project Manager'" class="btn primary" routerLink="/milestones">
+
+            Manage Milestones
+          </button>
+
+          <button *ngIf="userRole === 'Emplyees'" class="btn primary" routerLink="/projects">
+            My Projects
+          </button>
+        </ng-container>
+
+        <button class="btn secondary" routerLink="#features">
+          Learn More
+        </button>
+      </div>
+    </div>
+
+    <!-- Premium Graphics -->
+    <div class="hero-graphics">
+      <div class="gradient-orb orb1"></div>
+      <div class="gradient-orb orb2"></div>
+      <div class="glass-card"></div>
+    </div>
+
+  </div>
+</section>

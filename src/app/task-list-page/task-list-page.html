@@ -1,0 +1,43 @@
+<section class="task-page">
+
+  <!-- Header -->
+  <div class="page-header">
+    <h1>Tasks</h1>
+    <p class="subtitle">
+      Explore all milestone tasks, review their status, and ensure timely execution for smooth project flow.
+    </p>
+  </div>
+
+
+  <!-- Task List -->
+  <div class="task-grid">
+    <ng-container *ngFor="let task of tasks | async">
+      <div class="task-card" *ngIf="!task.isDeleted">
+
+        <div class="task-header">
+          <h2>{{ task.name }}</h2>
+
+          <span class="task-status" [ngClass]="{
+            'completed': task.status === 'Completed',
+            'in-progress': task.status === 'In-progress',
+            'not-started': task.status === 'Not started'
+          }">
+            {{ task.status }}
+          </span>
+        </div>
+
+        <p class="task-desc">{{ task.description }}</p>
+
+        <!-- View Details Button -->
+        <div class="task-footer">
+          <button class="btn-view" [routerLink]="['/task',task._id]">
+            View Details
+          </button>
+        </div>
+
+      </div>
+    </ng-container>
+
+  </div>
+
+</section>

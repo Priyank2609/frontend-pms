@@ -1,0 +1,80 @@
+<div class="comment-detail-page">
+
+  <div class="comment-card" *ngIf="(comment | async) as c">
+
+    <!-- Header -->
+    <div class="comment-header">
+
+      <div class="left">
+        <span class="comment-user" *ngFor="let u of c.user">
+          <i class="fa fa-user"></i> {{ u.username }}
+
+        </span>
+      </div>
+
+      <div class="right">
+        <span class="comment-date">
+          {{ c.createdAt | date:'dd/MMM/yy, hh:mm a' }}
+        </span>
+
+        <ng-container *ngFor="let u of c.user">
+          <button class="delete-comment-btn" *ngIf="u._id===currentUser" (click)="deleteComment(c._id)">
+            <i class="fa fa-trash"></i> Delete
+          </button>
+        </ng-container>
+
+      </div>
+
+    </div>
+
+    <!-- Comment Box -->
+    <div class="comment-text-box">
+      {{ c.comment }}
+    </div>
+
+    <!-- Row: Comment ID + Updated -->
+    <div class="info-row">
+
+      <span><strong>Updated:</strong> {{ c.updatedAt | date:'medium' }}</span>
+    </div>
+
+    <!-- User Info Block -->
+    <div class="section-block user-block" *ngFor="let u of c.user">
+      <h3><i class="fa fa-user-circle"></i> User Details</h3>
+
+      <div class="grid-2">
+        <span><strong>Username:</strong> {{ u.username }}</span>
+
+
+        <span><strong>Developer:</strong> {{ u.developer }}</span>
+
+      </div>
+    </div>
+
+    <!-- Task Info Block -->
+    <div class="section-block task-block" *ngIf="c.task">
+      <h3><i class="fa fa-tasks"></i> Task Details</h3>
+
+      <div class="grid-2">
+
+        <span><strong>Task Name:</strong> {{ c.task.name }}</span>
+        <span><strong>Description:</strong> {{ c.task.description }}</span>
+
+
+        <span><strong>Start Date:</strong> {{( c.task.startDate | date:'short')||"N/A" }}</span>
+        <span><strong>End Date:</strong> {{ (c.task.endDate | date:'short')||"N/A" }}</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Error Popup -->
+  <div class="popup-overlay" *ngIf="error">
+    <div class="popup-box">
+      <h3>Error</h3>
+      <p>{{ error }}</p>
+      <button class="close-btn" (click)="error=''">Close</button>
+    </div>
+  </div>
+
+</div>

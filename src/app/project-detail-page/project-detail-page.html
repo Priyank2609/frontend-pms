@@ -1,0 +1,102 @@
+<section class="project-detail-page">
+  <div class="project-detail-card">
+
+
+    <div class="project-detail-header">
+
+      <h1>{{(projectDetail|async)?.projectName}}</h1>
+      <span class="status" [ngClass]="{
+        'in-progress': (projectDetail | async)?.status === 'In-progress',
+        'not-started': (projectDetail | async)?.status === 'Not started',
+        'completed': (projectDetail | async)?.status === 'Completed'
+
+      }">
+        {{(projectDetail |async)?.status}}
+      </span>
+
+    </div>
+
+
+    <div class="project-detail-info">
+      <p class="description">{{(projectDetail |async)?.description}}</p>
+
+      <div class="info-grid">
+        <div><strong>Created By:</strong>{{(projectDetail|async)?.createdBy.username}} </div>
+        <div *ngIf="(projectDetail|async)?.assignedTo; else noManager">
+          <strong>Assigned To:</strong> {{(projectDetail|async)?.assignedTo.username}}
+        </div>
+
+        <ng-template #noManager>
+          <div class="no-manager">
+            <strong>Assigned To:</strong> None
+            <button class="assign-btn" *ngIf="role === 'Admin' && (projectDetail |async)?.createdBy._id===currentUserId"
+              [routerLink]=" ['/assignUser',(projectDetail |async)?._id]">
+              Assign Project Manager
+            </button>
+          </div>
+        </ng-template>
+
+        <div><strong>Start Date:</strong>{{((projectDetail|async)?.startDate | date:'mediumDate')||'N/A'}}</div>
+        <div><strong>End Date:</strong>{{((projectDetail|async)?.endDate|date:'mediumDate') || 'N/A'}} </div>
+        <div><strong>Total Tasks:</strong> {{(projectDetail|async)?.totalTasks}}</div>
+        <div><strong>Completed Tasks:</strong> {{(projectDetail|async)?.completedTasks}}</div>
+        <div><strong>In Progress:</strong> {{(projectDetail|async)?.inProgress}}</div>
+        <div><strong>Progress:</strong> {{(projectDetail|async)?.progressPercent}}%</div>
+      </div>
+    </div>
+
+
+    <div class="milestones-section">
+      <h2>Milestones</h2>
+      <ng-container *ngFor="let mile of (projectDetail | async)?.milestones">
+        <div class="milestone-card" *ngIf="!mile.isDeleted">
+          <div class="milestone-header">
+            <h3>{{mile.name}}</h3>
+            <span class="due-date">Due:{{(mile.dueDate |date:'mediumDate')|| 'N/A'}} </span>
+          </div>
+          <p class="milestone-desc"> {{mile.description}}</p>
+
+          <div class="tasks-list" *ngFor="let task of mile.task">
+            <div class="task-item">
+              <span class="task-name">{{ task.name }}</span>
+              <span class="task-status">{{ task.status }}</span>
+            </div>
+          </div>
+
+        </div>
+      </ng-container>
+    </div>
+
+
+    <div class="project-detail-actions">
+      <ng-container *ngIf="projectDetail | async as project">
+
+        <button class="btn-delete" *ngIf="role==='Admin'&& project.createdBy._id===currentUserId "
+          (click)="deleteProject(project._id)">
+          Delete Project
+        </button>
+
+
+        <button class="btn-add-milestone"
+          *ngIf="project.status!=='Completed' &&  role === 'Project Manager' && project.assignedTo._id === currentUserId "
+          [routerLink]="['createMilestone']">
+          Add Milestone
+        </button>
+      </ng-container>
+    </div>
+
+
+  </div>
+
+
+
+  <div class="popup-overlay" *ngIf="error">
+    <div class="popup-box">
+      <h3>Error</h3>
+      <p>{{ error }}</p>
+
+      <button class="close-btn" (click)="error=''">Close</button>
+    </div>
+  </div>
+
+</section>

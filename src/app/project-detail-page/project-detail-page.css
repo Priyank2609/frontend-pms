@@ -1,0 +1,350 @@
+/* Wrapper */
+.project-detail-page {
+  display: flex;
+  justify-content: center;
+  padding: 60px 24px;
+  background: radial-gradient(circle at top, #151515 0%, #0b0b0b 60%);
+  color: #e7e7e7;
+  font-family: "Inter", sans-serif;
+}
+
+/* Main Card (Ultra Premium Glass) */
+.project-detail-card {
+  width: 940px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 26px;
+  padding: 40px;
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  animation: fadeLift 0.5s ease forwards;
+  transform: translateY(10px);
+}
+
+/* Entrance Animation */
+@keyframes fadeLift {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Header */
+.project-detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.project-detail-header h1 {
+  margin: 0;
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  color: #ffffff;
+}
+
+/* Base Status Badge */
+.status {
+  padding: 7px 16px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: capitalize;
+  border: 1px solid rgba(255,255,255,0.12);
+  backdrop-filter: blur(8px);
+}
+
+/* In Progress - Neon Blue Glow */
+.status.in-progress {
+  background: rgba(0, 108, 255, 0.15);
+  color: #61a8ff;
+  border-color: rgba(0, 108, 255, 0.35);
+  box-shadow: 0 0 12px rgba(0, 108, 255, 0.35);
+}
+
+/* Not Started - Soft Neutral Gray */
+.status.not-started {
+  background: rgba(255, 255, 255, 0.05);
+  color: #bbbbbb;
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 8px rgba(255,255,255,0.1);
+}
+
+/* Completed - Premium Green Glow */
+.status.completed {
+  background: rgba(0, 200, 120, 0.18);
+  color: #66ffba;
+  border-color: rgba(0, 200, 120, 0.4);
+  box-shadow: 0 0 14px rgba(0, 200, 120, 0.45);
+}
+
+
+/* Project Info */
+.project-detail-info {
+  margin-top: 32px;
+}
+
+.description {
+  margin-bottom: 18px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #cfcfcf;
+}
+
+/* Grid Details */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px 28px;
+}
+
+.info-grid div {
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 15px;
+}
+
+.info-grid strong {
+  color: #8fb4ff;
+  font-weight: 600;
+}
+
+/* Milestones */
+.milestones-section {
+  margin-top: 45px;
+  
+}
+
+.milestones-section h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.milestone-card {
+  padding: 22px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: 0.25s ease;
+  margin: 20px 0;
+}
+
+.milestone-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-3px);
+}
+
+.milestone-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.milestone-header h3 {
+  font-size: 20px;
+}
+
+.due-date {
+  opacity: 0.75;
+  font-size: 14px;
+}
+
+/* Task List */
+.tasks-list {
+  margin-top: 18px;
+  display: grid;
+  gap: 14px;
+}
+
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 18px;
+  background: #1a1a1a;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  transition: 0.22s ease;
+}
+
+.task-item:hover {
+  background: #222;
+  transform: translateY(-2px);
+}
+
+.task-status {
+  font-size: 13px;
+  opacity: 0.85;
+}
+
+/* Buttons */
+.project-detail-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 14px;
+  margin-top: 35px;
+}
+
+.btn-delete, .btn-add-milestone {
+  padding: 12px 22px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 14px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #fff;
+}
+
+/* Delete Button - red gradient */
+.btn-delete {
+  background: linear-gradient(135deg, #ff5a5a, #ff8787);
+  box-shadow: 0 8px 24px rgba(255,90,90,0.35);
+}
+.btn-delete:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(255,90,90,0.55);
+}
+
+/* Add Milestone Button - purple gradient */
+.btn-add-milestone {
+  background: linear-gradient(135deg, #7a6aff, #b78cff);
+  box-shadow: 0 8px 24px rgba(122,106,255,0.35);
+}
+.btn-add-milestone:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(122,106,255,0.55);
+}
+
+.no-manager {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 16px 20px;
+  border-radius: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+}
+
+.no-manager strong {
+  color: #9ac7ff;
+  font-size: 15px;
+}
+
+.no-manager span {
+  color: #d6d6d6;
+}
+
+/* Assign Button */
+.assign-btn {
+  background: linear-gradient(135deg, #4b57d7, #5865f2);
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 13.5px;
+  font-weight: 500;
+  transition: 0.25s ease;
+}
+
+.assign-btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+/* ===== POPUP OVERLAY ===== */
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(6px);
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 99999;
+  animation: fadeIn 0.25s ease-out;
+}
+
+/* ===== POPUP BOX ===== */
+.popup-box {
+  width: min(420px, 90%);
+  background: rgba(25, 25, 35, 0.85);
+  backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 90, 90, 0.25);
+  border-radius: 18px;
+  padding: 24px 26px;
+  color: #f1f1f4;
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.55),
+    inset 0 0 24px rgba(255, 90, 90, 0.08);
+  animation: slideUp 0.28s ease-out;
+}
+
+/* Title */
+.popup-box h3 {
+  margin: 0 0 10px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #ff6363;
+  text-shadow: 0 0 6px rgba(255, 80, 80, 0.4);
+}
+
+/* Message */
+.popup-box p {
+  margin: 0 0 18px;
+  font-size: 1rem;
+  color: #e2e3e7;
+  line-height: 1.45;
+}
+
+/* Button Row */
+.popup-box .close-btn {
+  padding: 10px 18px;
+  border-radius: 12px;
+  cursor: pointer;
+  border: none;
+  background: #ff5757;
+  color: #fff;
+  font-weight: 600;
+  transition: 0.25s ease;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.popup-box .close-btn:hover {
+  background: #ff3d3d;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255, 70, 70, 0.35);
+}
+
+/* ===== Animations ===== */
+@keyframes fadeIn {
+  from {
+    background: rgba(0, 0, 0, 0);
+  }
+  to {
+    background: rgba(0, 0, 0, 0.55);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

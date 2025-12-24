@@ -1,0 +1,131 @@
+/* --- PREMIUM CARD --- */
+.create-task-card {
+  background: rgba(20, 20, 30, 0.6);
+  backdrop-filter: blur(18px) saturate(180%);
+  border-radius: 24px;
+  padding: 35px;
+  width: 100%;
+  max-width: 520px;
+  margin: 40px auto;
+  box-shadow:
+    0 25px 60px rgba(0,0,0,0.65),
+    inset 0 0 0 1px rgba(255,255,255,0.05);
+  animation: fadeIn 0.4s ease-out;
+  color: #e8e8e8;
+}
+
+/* Subtle Gradient Outline */
+.create-task-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  padding: 1.6px;
+  background: linear-gradient(135deg, #7c5bff55, #b08cff55, #6a5af955);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Heading */
+.create-task-card h2 {
+  font-size: 1.85rem;
+  font-weight: 800;
+  margin-bottom: 25px;
+  text-shadow: 0 0 10px rgba(120, 90, 255, 0.35);
+  color: #fff;
+}
+
+/* --- FORM GROUP --- */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  font-size: 1rem;
+  color: #c7c7c7;
+  font-weight: 500;
+}
+
+/* Inputs */
+.form-group input,
+.form-group textarea {
+  background: rgba(35, 35, 50, 0.7);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 13px 16px;
+  color: #fff;
+  font-size: 1rem;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(10px);
+}
+
+/* Hover */
+.form-group input:hover,
+.form-group textarea:hover {
+  background: rgba(50, 50, 70, 0.8);
+}
+
+/* Focus - Premium Glow */
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  background: rgba(80, 70, 120, 0.9);
+  box-shadow: 0 0 12px rgba(120, 90, 255, 0.65);
+  border-color: rgba(120, 90, 255, 0.7);
+}
+
+/* --- CREATE BUTTON --- */
+.btn-create {
+  margin-top: 10px;
+  background: linear-gradient(135deg, #7c5bff, #9f80ff, #c4a8ff);
+  border: none;
+  padding: 14px 30px;
+  border-radius: 50px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  float: right;
+  box-shadow: 0 8px 22px rgba(122, 90, 255, 0.5);
+}
+
+/* Hover */
+.btn-create:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow:
+    0 14px 28px rgba(122, 90, 255, 0.55),
+    0 0 12px rgba(190, 160, 255, 0.75);
+}
+
+/* Click */
+.btn-create:active {
+  transform: scale(0.97);
+}
+
+/* --- Animation --- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.api-error {
+  color: #dc2626;
+  background: #fee2e2;
+  padding: 8px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}

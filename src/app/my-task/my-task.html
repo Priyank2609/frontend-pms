@@ -1,0 +1,38 @@
+<div class="task-page">
+  <h2 class="page-title">My Tasks</h2>
+
+  <div class="task-list" *ngIf="(tasks | async)?.length>0 ; else noTasks">
+    <div class="task-card" *ngFor="let task of tasks | async">
+      <div class="task-header">
+        <h3>{{ task.name }}</h3>
+        <span class="task-status" [ngClass]="{
+        'in-progress': task.status === 'In-progress',
+        'not-started': task.status === 'Not started',
+        'completed': task.status === 'Completed'
+      }">
+          {{ task.status }}
+        </span>
+      </div>
+
+      <p class="task-desc">{{ task.description }}</p>
+
+      <div class="task-footer">
+        <div class="assigned-user">
+          <i class="fa fa-user"></i> {{ task.assignTo?.username || 'Unassigned' }}
+        </div>
+        <div class="progress-bar">
+          <span [style.width.%]="task.progress"></span>
+        </div>
+        <button class="btn-view-task" [routerLink]="['/task',task._id]">
+          View Details
+        </button>
+      </div>
+    </div>
+  </div>
+  <ng-template #noTasks>
+    <div class="no-tasks">
+      <i class="fa fa-tasks"></i>
+      <p>No tasks assigned to you yet.</p>
+    </div>
+  </ng-template>
+</div>

@@ -1,0 +1,41 @@
+<section class="employee-view-page">
+
+  <div class="view-card">
+
+    <!-- Header -->
+    <div class="header">
+      <div class="avatar">
+        {{ (employee | async)?.username[0] | uppercase }}
+      </div>
+      <div class="info">
+        <h2>{{ (employee | async)?.username }}</h2>
+        <span class="role">{{ (employee | async)?.role }}</span>
+        <p class="email">{{ (employee | async)?.email }}</p>
+      </div>
+    </div>
+
+    <!-- Profile Details -->
+    <div class="details">
+      <h3>Profile Information</h3>
+      <div class="detail-item">
+        <strong>Full Name:</strong> {{ (employee | async)?.profile?.fullname }}
+      </div>
+      <div class="detail-item">
+        <strong>Phone:</strong> {{ (employee | async)?.profile?.phone }}
+      </div>
+      <div class="detail-item">
+        <strong>Address:</strong> {{ (employee | async)?.profile?.address }}
+      </div>
+      <div class="detail-item">
+        <strong>Joined:</strong> {{ (employee | async)?.createdAt | date:"mediumDate" }}
+      </div>
+    </div>
+
+
+    <div class="actions">
+      <button class="btn back-btn" routerLink="/users/employee">Back to Employees</button>
+    </div>
+
+  </div>
+
+</section>

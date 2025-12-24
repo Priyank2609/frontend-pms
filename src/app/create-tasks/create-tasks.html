@@ -1,0 +1,24 @@
+<div class="create-task-card">
+  <h2>Create New Task</h2>
+
+  <form [formGroup]="taskForm" (ngSubmit)="createTask()">
+
+    <div class="form-group">
+      <label for="taskName">Task Name</label>
+      <input type="text" id="taskName" name="taskName" formControlName='name' required>
+    </div>
+
+    <div class="form-group">
+      <label for="taskDesc">Description</label>
+      <textarea id="taskDesc" name="taskDesc" rows="3" formControlName='description'></textarea>
+    </div>
+
+    <div class="api-error" *ngIf="error">
+      {{ error }}
+    </div>
+
+
+    <button type="submit" class="btn-create">Create Task</button>
+
+  </form>
+</div>

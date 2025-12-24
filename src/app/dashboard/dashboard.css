@@ -1,0 +1,258 @@
+/* =======================
+   Admin Dashboard Base
+======================= */
+.admin-dashboard {
+  padding: 50px;
+  background: #0d0f16;
+  color: #fff;
+  font-family: "Inter", sans-serif;
+  background-image: radial-gradient(circle at top left, #11131b 0%, #0d0f16 100%);
+  min-height: 100vh;
+  transition: background 0.3s;
+}
+
+/* =======================
+   HERO SECTION
+======================= */
+.dashboard-hero {
+  position: relative;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 28px;
+  padding: 50px 40px;
+  margin-bottom: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(15px);
+  overflow: hidden;
+  box-shadow: 0 0 40px rgba(79, 70, 229, 0.25);
+  transition: transform 0.3s;
+}
+
+.dashboard-hero:hover {
+  transform: translateY(-3px);
+}
+
+.hero-glow {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  top: -120px;
+  right: -120px;
+  background: radial-gradient(circle, #4f46e5 0%, transparent 70%);
+  opacity: 0.3;
+  filter: blur(80px);
+  animation: glowPulse 6s infinite alternate;
+}
+
+@keyframes glowPulse {
+  0% { transform: scale(1); opacity: 0.25; }
+  50% { transform: scale(1.1); opacity: 0.35; }
+  100% { transform: scale(1); opacity: 0.25; }
+}
+
+.hero-content h1 {
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.hero-content p {
+  opacity: 0.8;
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.hero-actions {
+  margin-top: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.tag-btn {
+  padding: 10px 16px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.12);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: 0.25s;
+}
+
+.tag-btn:hover {
+  background: rgba(255,255,255,0.18);
+  transform: translateY(-2px);
+}
+
+/* =======================
+   STAT CARDS
+======================= */
+.stats-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+  margin-bottom: 50px;
+}
+
+.stat-card {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 35px 25px;
+  border-radius: 22px;
+  text-align: center;
+  border: 1px solid rgba(255,255,255,0.07);
+  transition: 0.3s;
+}
+
+.stat-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 30px rgba(79, 70, 229, 0.25);
+}
+
+.stat-card .value {
+  margin-top: 12px;
+  font-size: 34px;
+  font-weight: 800;
+  color: #c7d2ff;
+}
+
+/* =======================
+   SECTION TITLE
+======================= */
+.section-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-weight: 600;
+  color: #e0e0e0;
+}
+
+/* =======================
+   Project Cards Premium
+======================= */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 28px;
+  padding: 20px 0;
+}
+
+.project-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 28px 24px;
+  border-radius: 22px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+  transition: transform 0.3s, box-shadow 0.4s, background 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  backdrop-filter: blur(10px);
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 30px rgba(79, 70, 229, 0.4);
+  background: rgba(79, 70, 229, 0.05);
+}
+
+.project-card h4 {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.project-card .status {
+  padding: 5px 14px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  display: inline-block;
+  margin-bottom: 10px;
+  color: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.status.in-progress {
+  background: linear-gradient(135deg, #f59e0b, #fbbf24);
+}
+.status.not-started {
+  background: linear-gradient(135deg, #ef4444, #f87171);
+}
+.status.completed {
+  background: linear-gradient(135deg, #10b981, #34d399);
+}
+
+/* Progress bar */
+.project-card .progress-bar {
+  background: rgba(255,255,255,0.1);
+  border-radius: 12px;
+  height: 12px;
+  overflow: hidden;
+}
+
+.project-card .progress-bar span {
+  display: block;
+  height: 100%;
+  border-radius: 12px 0 0 12px;
+  transition: width 0.6s ease-in-out;
+ background: linear-gradient(90deg, #6366f1, #818cf8); 
+}
+
+/* Add subtle hover glow to project cards */
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  width: calc(100% + 40px);
+  height: calc(100% + 40px);
+  background: radial-gradient(circle, rgba(79,70,229,0.15) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  border-radius: 26px;
+  pointer-events: none;
+}
+
+.project-card:hover::before {
+  opacity: 1;
+}
+
+
+/* =======================
+   EMPLOYEE GRID
+======================= */
+.employees-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 22px;
+}
+
+.employee-card {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 20px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.07);
+  transition: 0.3s;
+}
+
+.employee-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 25px rgba(79, 70, 229, 0.3);
+}
+
+.employee-card .avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 18px;
+  color: #fff;
+}

@@ -1,0 +1,137 @@
+<div class="task-detail-page">
+  <div class="task-detail-card">
+
+
+    <div class="task-header">
+      <div class="left">
+        <h2 class="task-title">{{ (task | async)?.name }}</h2>
+      </div>
+
+      <span class="status" [ngClass]="{
+          'in-progress': (task | async)?.status === 'In-progress',
+          'not-started': (task | async)?.status === 'Not started',
+          'completed': (task | async)?.status === 'Completed'
+        }">
+        {{ (task | async)?.status }}
+      </span>
+    </div>
+
+    <div class="section-line"></div>
+
+
+
+    <div class="section">
+      <h3 class="section-title">Description</h3>
+      <p class="task-description">
+        {{ (task | async)?.description }}
+
+      </p>
+    </div>
+
+
+
+    <div class="section two-col">
+      <div class="info-box">
+        <label>Start Date</label>
+        <p>{{ ((task | async)?.startDate | date:'mediumDate')||'N/A' }}</p>
+      </div>
+      <div class="info-box">
+        <label>End Date</label>
+        <p>{{ ((task | async)?.endDate | date:'mediumDate')||'N/A' }}</p>
+      </div>
+    </div>
+
+
+    <div class="section">
+      <h3 class="section-title">Assigned User</h3>
+
+      <div class="assigned-user-box">
+        <p>
+          {{ (task | async)?.assignTo?.username || 'Not Assigned' }}
+        </p>
+
+        <ng-container *ngIf="role === 'Team Leader'">
+          <button class="btn-assign-user" *ngIf="!(task | async)?.assignTo" [routerLink]="['assignUser']">
+            <i class="fa fa-user-plus"></i> Assign User
+          </button>
+        </ng-container>
+      </div>
+
+
+      <div class="update-status-section" *ngIf="role === 'Employee'">
+        <h3 class="section-title">Update Status</h3>
+
+        <div class="status-grid">
+
+          <button class="status-btn not-started" (click)="updateStatus('Not started')"
+            *ngIf="(task|async)?.status !=='In-progress' && (task|async)?.status !=='Completed'">
+            <i class="fa fa-hourglass-start"></i> Not Started
+          </button>
+
+          <button class="status-btn in-progress" (click)="updateStatus('In-progress')">
+            <i class="fa fa-spinner"></i> In Progress
+          </button>
+
+          <button class="status-btn completed" (click)="updateStatus('Completed')">
+            <i class="fa fa-check-circle"></i> Completed
+          </button>
+
+        </div>
+      </div>
+    </div>
+
+
+    <!-- COMMENTS -->
+    <div class="section comments-section">
+      <h3 class="section-title">Comments</h3>
+
+      <ng-container *ngFor="let c of (task | async)?.comment||[]">
+        <div class="comment-card" *ngIf="!c.isDeleted">
+
+          <div class="comment-header">
+            <div class="comment-user">
+              <i class="fa fa-user"></i>
+              <span *ngFor="let us of c.user">{{ us.username }}</span>
+            </div>
+
+            <span class="comment-date">{{ c.createdAt | date:'short' }}</span>
+          </div>
+
+          <p class="comment-text">{{ c.comment }}</p>
+
+          <ng-container *ngIf="(task | async) as taskId">
+            <button class="view-comment-btn" [routerLink]="['/task', taskId._id, 'comment', c._id]">
+              <i class="fa fa-eye"></i> View Details
+            </button>
+          </ng-container>
+
+        </div>
+      </ng-container>
+
+      <button class="btn-add-comment" *ngIf="role === 'Employee'" [routerLink]="['createComment']">
+        <i class="fa fa-comment"></i> Add Comment
+      </button>
+
+    </div>
+
+
+    <!-- ACTION -->
+    <div class="task-actions" *ngIf="task | async as taskId">
+      <button class="btn-delete-task" (click)="deleteTask(taskId._id)"
+        *ngIf="role === 'Project Manager' && (task | async)?.createdBy._id  === currentUser ">
+        <i class="fa fa-trash"></i> Delete Task
+      </button>
+    </div>
+
+  </div>
+
+  <!-- POPUP ERROR -->
+  <div class="popup-overlay" *ngIf="error">
+    <div class="popup-box">
+      <h3>Error</h3>
+      <p>{{ error }}</p>
+      <button class="close-btn" (click)="error=''">Close</button>
+    </div>
+  </div>
+
+</div>

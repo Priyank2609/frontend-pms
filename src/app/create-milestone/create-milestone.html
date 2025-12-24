@@ -1,0 +1,35 @@
+<section class="create-milestone-page">
+  <div class="create-milestone-card">
+    <h2>Create New Milestone</h2>
+
+    <form [formGroup]="milestoneForm" (ngSubmit)="createMile()">
+
+      <!-- Milestone Name -->
+      <div class="form-group">
+        <label for="name">Milestone Name</label>
+        <input type="text" id="name" name="name" formControlName="name"
+          [ngClass]="{'invalid-input': submitted && f['name'].errors}">
+        <!-- Error messages -->
+        <div class="error" *ngIf="submitted && f['name'].errors">
+          <small *ngIf="f['name'].errors['required']">Milestone name is required.</small>
+          <small *ngIf="f['name'].errors['minlength']">Name must be at least 3 characters.</small>
+        </div>
+      </div>
+
+      <!-- Description -->
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea id="description" name="description" formControlName="description" rows="4"
+          [ngClass]="{'invalid-input': submitted && f['description'].errors}"></textarea>
+        <!-- Error messages -->
+        <div class="error" *ngIf="submitted && f['description'].errors">
+          <small *ngIf="f['description'].errors['required']">Description is required.</small>
+          <small *ngIf="f['description'].errors['minlength']">Description must be at least 10 characters.</small>
+        </div>
+      </div>
+
+      <button type="submit" class="btn-create">Create Milestone</button>
+
+    </form>
+  </div>
+</section>

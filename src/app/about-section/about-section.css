@@ -1,0 +1,105 @@
+.about-section {
+  position: relative;
+  padding: 120px 40px;
+  background: linear-gradient(180deg, #0e0e0e, #0a0a0a);
+  overflow: hidden;
+  color: #fff;
+}
+
+/* Container */
+.about-container {
+  max-width: 900px;
+  margin: auto;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 26px;
+  padding: 50px 40px;
+  backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.55);
+  position: relative;
+  z-index: 2;
+  animation: fadeUp 0.6s ease;
+}
+
+/* Header */
+.about-header {
+  text-align: center;
+  margin-bottom: 34px;
+}
+
+.about-header h2 {
+  font-size: 2.6rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+  background: linear-gradient(90deg, #a98bff, #6d5cff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.about-header p {
+  color: #cfcfcf;
+  font-size: 1.15rem;
+  line-height: 1.7;
+}
+
+/* Paragraph Styling */
+.about-content p {
+  margin-bottom: 18px;
+  font-size: 1.05rem;
+  color: #d5d5d5;
+  line-height: 1.8;
+}
+
+.about-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* Glow Elements */
+.about-glow,
+.about-glow-2 {
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  filter: blur(140px);
+  opacity: 0.25;
+}
+
+.about-glow {
+  background: #6d5cff;
+  top: -120px;
+  right: -80px;
+}
+
+.about-glow-2 {
+  background: #a377ff;
+  bottom: -140px;
+  left: -100px;
+}
+
+/* Entrance Animation */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .about-section {
+    padding: 90px 20px;
+  }
+
+  .about-container {
+    padding: 35px 25px;
+  }
+
+  .about-header h2 {
+    font-size: 2.2rem;
+  }
+}

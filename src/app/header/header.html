@@ -1,0 +1,95 @@
+<header class="header-container">
+
+
+  <div class="logo">
+    <div class="icon">📁</div>
+    <div class="text" routerLink="/">
+      <span class="title">PMS</span>
+      <span class="subtitle">Project Management</span>
+    </div>
+  </div>
+
+
+  <nav class="nav-links" [class.active]="isMenu">
+
+    <button class="close-btn" (click)="onMenuCheck()">×</button>
+
+    <ng-container *ngIf="userRole === 'Admin' || userRole==='Client'">
+      <a routerLink="admin/dashboard" routerLinkActive="active">Dashboard</a>
+      <a routerLink="/projects" routerLinkActive="active">Projects</a>
+      <a routerLink="/milestones" routerLinkActive="active">Milestone</a>
+      <a routerLink="users/employee" routerLinkActive="active" *ngIf="userRole==='Admin'">Employees</a>
+      <a routerLink="/createProject" routerLinkActive="active" *ngIf="userRole==='Admin'">Create Project</a>
+    </ng-container>
+
+
+    <ng-container *ngIf="userRole === 'Project Manager'">
+
+      <a routerLink="/projects" routerLinkActive="active">Projects</a>
+      <a routerLink="/milestones" routerLinkActive="active">Milestone</a>
+      <a routerLink="/tasks" routerLinkActive="active">Tasks</a>
+      <!-- <a routerLink="/createTask" routerLinkActive="active">Create Tasks</a> -->
+    </ng-container>
+
+    <ng-container *ngIf="userRole === 'Team Leader'">
+
+      <!-- <a routerLink="/projects" routerLinkActive="active">Projects</a>
+      <a routerLink="/milestones" routerLinkActive="active">Milestone</a> -->
+      <a routerLink="/tasks" routerLinkActive="active">Tasks</a>
+      <!-- <a routerLink="/createTask" routerLinkActive="active">Create Tasks</a> -->
+    </ng-container>
+
+    <ng-container *ngIf="userRole === 'Employee'">
+      <a routerLink="/tasks" routerLinkActive="active">Tasks</a>
+      <a routerLink="/my-tasks" routerLinkActive="active">My Tasks</a>
+
+    </ng-container>
+
+
+
+
+    <ng-container *ngIf="!isLoggedIn">
+      <a routerLink="/login" class="login">Login</a>
+      <a routerLink="/register" class="register">Register</a>
+    </ng-container>
+  </nav>
+
+
+  <div class="actions" *ngIf="isLoggedIn">
+
+
+    <!-- <div class="search-box">
+      <input type="text" placeholder="Search..." />
+    </div> -->
+
+
+    <div class="icon notification">
+      <i class="fa-solid fa-bell"></i>
+    </div>
+
+
+    <div class="profile" (click)="onProfileCheck()">
+      <img src="https://i.pravatar.cc/40" alt="User" />
+    </div>
+
+    <div class="dropdown" [class.open]="isProfile">
+
+
+
+      <a *ngIf="profileExists" routerLink="/profile">
+        My Profile
+      </a>
+      <a *ngIf="!profileExists" routerLink="/createProfile">
+        Create Your Profile
+      </a>
+      <a routerLink="/settings">Settings</a>
+      <a (click)="logout(); $event.stopPropagation()">Logout</a>
+    </div>
+
+  </div>
+
+
+  <div class="hamburger" (click)="onMenuCheck()">
+    <i class="fa-solid fa-bars"></i>
+  </div>
+</header>

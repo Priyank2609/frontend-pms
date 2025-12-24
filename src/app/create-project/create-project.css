@@ -1,0 +1,150 @@
+/* Page Wrapper */
+.create-project-section {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #0e0e0f, #1b1b1f);
+  font-family: "Inter", sans-serif;
+  color: #fff;
+}
+
+/* Card */
+.form-card {
+  width: 450px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 35px 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* Title & Subtitle */
+.form-card h2 {
+  font-size: 26px;
+  margin-bottom: 5px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.form-card .subtitle {
+  font-size: 14px;
+  color: #9ca3af;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+/* Form Group */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  font-size: 14px;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #e5e7eb;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 12px 15px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.25s ease;
+  resize: none;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #9ca3af;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+}
+
+/* Submit Button */
+.submit-btn {
+  width: 100%;
+  padding: 12px 0;
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  border: none;
+  border-radius: 14px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.submit-btn:hover {
+  background: linear-gradient(135deg, #4338ca, #6d28d9);
+  transform: scale(1.03);
+}
+
+/* Error message container */
+.error {
+  margin-top: 5px;
+}
+
+/* Individual error text */
+.error small {
+  color: red;           /* Red color for errors */
+  font-size: 0.85rem;   /* Slightly smaller text */
+  display: block;       /* Each message on its own line */
+  margin-bottom: 2px;
+}
+
+/* Optional: Highlight invalid input */
+input.ng-touched.ng-invalid,
+textarea.ng-touched.ng-invalid {
+  border: 1px solid red;
+}
+
+/* Optional: Add a subtle background for invalid input */
+input.ng-touched.ng-invalid,
+textarea.ng-touched.ng-invalid {
+  background-color: #ffe6e6;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+/* Submit button styling */
+.submit-btn {
+  background-color: #4f46e5; /* Purple button */
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 15px;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.submit-btn:disabled {
+  background-color: #a5b4fc; /* Lighter color when disabled */
+  cursor: not-allowed;
+}
+
+.submit-btn:hover:not(:disabled) {
+  background-color: #4338ca;
+}
+

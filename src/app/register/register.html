@@ -1,0 +1,99 @@
+<div class="container">
+  <div class="card">
+    <h1>Create Account</h1>
+    <p class="lead">Fill in the details to create your account.</p>
+
+    <form #regForm="ngForm" (ngSubmit)="userReg(regForm)">
+
+
+      <div class="field">
+        <label>Email</label>
+        <input type="email" placeholder="you@example.com" name="email" ngModel required email #email="ngModel" />
+
+        <small class="error" *ngIf="email.invalid && email.touched">
+          * Enter a valid email address
+        </small>
+      </div>
+
+
+      <div class="row">
+
+
+        <div class="field">
+          <label>Username</label>
+          <input type="text" placeholder="your username" name="username" ngModel required minlength="3"
+            #username="ngModel" />
+
+          <small class="error" *ngIf="username.invalid && username.touched">
+            * Username must be at least 3 characters
+          </small>
+        </div>
+
+
+        <div class="field">
+          <label>Role</label>
+          <select name="role" ngModel required #role="ngModel" (change)="selectedRole=role.value">
+            <option value="">Select role</option>
+            <option value="Employee">Employee</option>
+            <option value="Project Manager">Project Manager</option>
+            <option value="Admin">Admin</option>
+            <option value="Client">Client</option>
+            <option value="Team Leader">Team Leader</option>
+          </select>
+
+          <small class="error" *ngIf="role.invalid && role.touched">
+            * Please select a role
+          </small>
+        </div>
+
+
+      </div>
+      <div class="field" *ngIf="selectedRole === 'Employee' || selectedRole === 'Team Leader'">
+        <label>Developer Type</label>
+        <select name="developer" ngModel #developer="ngModel" required>
+          <option value="">Select Developer Type</option>
+          <option value="Frontend Developer">Frontend Developer</option>
+          <option value="Backend Developer">Backend Developer</option>
+          <option value="Full Stack Developer">Full Stack Developer</option>
+          <option value="UI/UX Designer">UI/UX Designer</option>
+          <option value="QA Engineer">QA Engineer</option>
+          <option value="DevOps Engineer">DevOps Engineer</option>
+          <option value="Mobile Developer">Mobile Developer</option>
+        </select>
+
+        <small class="error" *ngIf="developer.invalid && developer.touched">
+          * Please select developer type
+        </small>
+      </div>
+
+      <div class="field">
+        <label>Password</label>
+        <input type="password" placeholder="Create password" name="password" ngModel required minlength="6"
+          #password="ngModel" />
+
+        <small class="error" *ngIf="password.invalid && password.touched">
+          * Password must be at least 6 characters
+        </small>
+      </div>
+
+      <div class="actions">
+        <button type="submit" class="btn" [disabled]="regForm.invalid">
+          Create Account
+        </button>
+
+        <button type="button" class="btn secondary" (click)="regForm.reset({role:''})">
+          Reset
+        </button>
+      </div>
+
+    </form>
+  </div>
+  <div class="popup-overlay" *ngIf="error">
+    <div class="popup-box">
+      <h3>Error</h3>
+      <p>{{ error }}</p>
+
+      <button class="close-btn" (click)="error=''">Close</button>
+    </div>
+  </div>
+</div>

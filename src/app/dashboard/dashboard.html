@@ -1,0 +1,92 @@
+<section class="admin-dashboard">
+
+
+  <div class="dashboard-hero">
+    <div class="hero-content">
+      <h1>Welcome Back,{{value}}<span>👋</span></h1>
+      <p>Your workspace snapshot — track projects, employees, and tasks in a powerful premium dashboard.</p>
+
+      <div class="hero-actions">
+        <button class="tag-btn">⚡ Real-time Insights</button>
+        <button class="tag-btn">📂 Project Overview</button>
+        <button class="tag-btn">👥 Employee Tracking</button>
+        <button class="tag-btn">📌 Task Management</button>
+      </div>
+    </div>
+
+    <div class="hero-glow"></div>
+  </div>
+
+
+  <div class="stats-cards">
+    <div class="stat-card">
+      <h3>Total Projects</h3>
+
+      <p class="value">{{(progress|async)?.totalProjects}}</p>
+    </div>
+
+    <div class="stat-card">
+      <h3>In-progress Project</h3>
+      <p class="value">{{(progress|async)?.inProgress}}</p>
+    </div>
+
+    <div class="stat-card">
+      <h3>Total Employees</h3>
+      <p class="value">{{(progress|async)?.totalUser}}</p>
+    </div>
+
+    <div class="stat-card">
+      <h3>Completed Project</h3>
+      <p class="value">{{(progress|async)?.completed}}</p>
+    </div>
+  </div>
+
+
+  <div class="section-title">Recent Projects</div>
+
+  <div class="projects-grid">
+    <ng-container *ngFor="let proj of project | async">
+      <div class="project-card" *ngIf="!proj.isDeleted">
+        <h4>{{proj.name}}</h4>
+
+        <p>
+          Status:
+          <span class="status" [ngClass]="{
+      'in-progress': proj.status === 'In-progress',
+        'not-started': proj.status === 'Not started',
+        'completed': proj.status === 'Completed'
+      }">
+            {{proj.status}}
+          </span>
+        </p>
+
+        <div class="progress-bar">
+          <span style="width: 65%"></span>
+        </div>
+
+      </div>
+    </ng-container>
+
+  </div>
+
+
+  <div class="section-title">Recent Employees</div>
+
+  <div class="employees-grid">
+    <ng-container *ngFor="let user of users | async">
+      <div class="employee-card" *ngIf="user.role === 'Employee' || user.role === 'Team Leader'">
+
+        <div class="avatar">{{ user.username[0] | uppercase }}</div>
+
+        <div>
+          <h4>{{ user.profile?.fullname }}</h4>
+          <p>{{ user.developer }}</p>
+        </div>
+
+      </div>
+    </ng-container>
+  </div>
+
+
+
+</section>

@@ -1,0 +1,41 @@
+<section class="project-page">
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <h1>Projects</h1>
+    <p class="subtitle">
+      Overview of all projects in the system. You can view project details, track status, and manage milestones.
+    </p>
+  </div>
+
+  <!-- Project Cards -->
+  <ng-container *ngFor="let project of allProject | async">
+    <div class="project-card" *ngIf="!project.isDeleted">
+
+      <div class="project-header">
+        <h2>{{ project?.name }}</h2>
+        <span class="status" [ngClass]="{
+        'in-progress': project.status === 'In-progress',
+        'not-started': project.status === 'Not started',
+        'completed': project.status === 'Completed'
+      }">
+          {{ project?.status }}
+        </span>
+      </div>
+
+      <!-- Project Details -->
+      <div class="project-details">
+        <p class="description">{{ project?.description }}</p>
+      </div>
+
+      <!-- Project Actions -->
+      <div class="project-actions">
+        <button class="btn primary" [routerLink]="['/project', project?._id]">
+          View Project Details
+        </button>
+      </div>
+
+    </div>
+  </ng-container>
+
+</section>

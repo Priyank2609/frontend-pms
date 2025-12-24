@@ -1,0 +1,37 @@
+<section class="assign-users-page">
+
+  <h1 class="page-title">Assign Project Manager</h1>
+  <p class="page-subtitle">Choose a user to assign to this project</p>
+
+  <div class="users-grid" *ngIf="filteredUsers.length>0; else noUsers">
+
+    <ng-container *ngFor="let user of filteredUsers">
+      <div class="user-card">
+
+        <div class="avatar">
+          {{ user.username[0]| uppercase}}
+        </div>
+
+        <div class="user-info">
+          <h3>{{ user.username }}</h3>
+          <p class="email">{{ user.email }}</p>
+          <span class="role">{{ user.role }}</span>
+        </div>
+
+        <button class="assign-btn" (click)="handleAssign(user._id)">
+          Assign User
+        </button>
+
+      </div>
+
+    </ng-container>
+
+  </div>
+
+  <ng-template #noUsers>
+    <div class="no-users">
+      <i class="fa fa-users"></i>
+      <p>No users available to assign.</p>
+    </div>
+  </ng-template>
+</section>
