@@ -9,7 +9,6 @@ import { Milestone, MilestoneDetailPage } from '../interfaces/milestone.interfac
 export class Milstone {
   constructor(private http: HttpClient) { }
   // URL = 'http://localhost:3001/'
-  // URL = 'https://pms-backend-vb2n.onrender.com/'
   URL = 'https://pms-backend-vb2n.onrender.com/'
 
   createMilestone(id: string, data: any): Observable<any> {
