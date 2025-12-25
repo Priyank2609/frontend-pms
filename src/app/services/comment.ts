@@ -13,7 +13,7 @@ export class Comment {
 
 
   getAllComment(): Observable<any> {
-    return this.http.get(`${this.URL}/comment`, { withCredentials: true })
+    return this.http.get(`${this.URL}comment`, { withCredentials: true })
   }
   addComment(id: string, data: any,): Observable<any> {
 
